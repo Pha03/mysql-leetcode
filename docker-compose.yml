@@ -1,0 +1,21 @@
+version: '3'
+services:
+  app:
+    build: ./Dockerfile
+    volumes:
+      - type: bind
+        source: .
+        target: /workspaces
+
+  db:
+    image: ubuntu/mysql:latest
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
+    volumes:
+      - type: bind
+        source: ./sqldata
+        target: /var/lib/mysql
