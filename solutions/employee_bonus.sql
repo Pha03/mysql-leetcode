@@ -1,3 +1,4 @@
+-- Active: 1744558639377@@db@3306@mydatabase
 Create table If Not Exists Employee (empId int, name varchar(255), supervisor int, salary int);
 Create table If Not Exists Bonus (empId int, bonus int);
 Truncate table Employee;
@@ -9,3 +10,10 @@ Truncate table Bonus;
 insert into Bonus (empId, bonus) values ('2', '500');
 insert into Bonus (empId, bonus) values ('4', '2000');
 
+
+# Write your MySQL query statement below
+SELECT Employee.name, Bonus.bonus
+FROM Employee
+LEFT JOIN Bonus
+ON Employee.empId = Bonus.empId
+WHERE Bonus.bonus < 1000 OR Bonus.bonus IS NULL;

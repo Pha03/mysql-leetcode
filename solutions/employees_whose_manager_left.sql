@@ -7,3 +7,16 @@ insert into Employees (employee_id, name, manager_id, salary) values ('13', 'Eme
 insert into Employees (employee_id, name, manager_id, salary) values ('1', 'Kalel', '11', '21241');
 insert into Employees (employee_id, name, manager_id, salary) values ('9', 'Mikaela', NULL, '50937');
 insert into Employees (employee_id, name, manager_id, salary) values ('11', 'Joziah', '6', '28485');
+
+
+
+
+# Write your MySQL query statement below
+select e.employee_id
+from employees e
+left join employees m
+on e.manager_id = m.employee_id
+where e.salary < 30000 
+AND m.employee_id is null
+AND e.manager_id is not null
+order by employee_id;
